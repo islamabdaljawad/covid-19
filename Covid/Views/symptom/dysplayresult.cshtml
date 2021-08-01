@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Covid.Models.symview>
+@{
+    ViewBag.Title = "dysplayresult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/footer.css" rel="stylesheet" />
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin.css" rel="stylesheet">
+   
+
+
+
+</head>
+
+<body style="background-color: #f3f1f1">
+    <div class="col-md-12">
+        <div class="alert alert-danger">
+            <p style="color:red">
+                We contribute to providing the necessary medicine for patients, so we allow visitors to do a simple test on our site to find out the symptoms that appear on them, and we allow pharmacies to obtain this data in order to provide the necessary medicine
+            </p>
+        </div>
+        <!-- DataTables Example -->
+        <div class="card mb-3" style="font-size: 15px; font-family: Arial;color:blue;">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                symptoms
+                @using (Html.BeginForm("Export", "symptom", FormMethod.Post))
+                {
+                    <input type="submit" value="Export to Excel" style="margin-left:90%;" />
+                }
+                @*<a href="javascript:window.print()">print</a>*@
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>City</th>
+                                <th>Date</th>
+                                <th>symptoms</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>City</th>
+                                <th>Date</th>
+                                <th>symptoms</th>
+
+                            </tr>
+                        </tfoot>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>@item.username</td>
+                                    <td>@item.cityname</td>
+                                    <td>@item.datetime</td>
+                                    <td>@item.symptomname</td>
+
+
+
+                                </tr>
+
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+        </div>
+        <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Page level plugin JavaScript-->
+        <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+        <script src="~/Content/vendor/datatables/jquery.dataTables.js"></script>
+        <script src="~/Content/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="~/Content/js/sb-admin.min.js"></script>
+
+        <!-- Demo scripts for this page-->
+        <script src="~/Content/js/demo/datatables-demo.js"></script>
+        <script src="~/Content/js/demo/chart-area-demo.js"></script>
+
+
+
+</body>
+</html>

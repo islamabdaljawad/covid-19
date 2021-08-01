@@ -1,0 +1,7 @@
+﻿@model Covid.Models.cityviewmodel
+
+
+
+@*@Html.ListBox("lstChosenEmployee", ViewBag.city as SelectList, new { @class = "form-control" })*@
+
+@Html.ListBoxFor(x=>x.selectedcities,Model.cities)

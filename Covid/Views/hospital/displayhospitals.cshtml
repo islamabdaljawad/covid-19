@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Covid.Models.hospitals>
+    @{
+        ViewBag.Title = "displayhospitals";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/Content/css/footer.css" rel="stylesheet" />
+    </head>
+    <body style="background-color:#f3f1f1">
+        <div class="col-10" style="background-color:#f3f1f1; margin-right:10%;margin-left:10%">
+            <div class="alert alert-danger">
+                <p style="color:red">
+                    Dear visitor
+                    This is a list of hospitals in your city that contain isolation beds
+                    You can go to any of them if your rate of infection with the Coronavirus is high
+                </p>
+            </div>
+            <div class="well">
+                <table class="table table-bordered" id="tblData">
+                    <thead>
+                        <tr class="success">
+                            <td>hospital name</td>
+                            <td>date</td>
+                            <td>number of beds</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model)
+                        {
+                            <tr>
+                                <td>@c.hospital</td>
+                                <td>@c.date</td>
+                                <td>@c.number</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                </>
+
+
+
+            </div>
+            @Scripts.Render("~/bundles/bootstrap")
+
+            </div>
+    </body>
+</html>

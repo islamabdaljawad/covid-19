@@ -1,0 +1,78 @@
+﻿@model Covid.Models.avilable_leds
+
+@{
+    ViewBag.Title = "enroll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/footer.css" rel="stylesheet" />
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+<body style="background-color:#f3f1f1">
+   
+    <div class="col-10" style="background-color:#f3f1f1; margin-right:10%;margin-left:10%">
+
+
+        <div class="alert alert-danger">
+            <p style="color:red">
+                Enter the number of beds available in the hospital today.
+                Please, the data must be correct a lot
+            </p>
+        </div>
+        <div class="well">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th colspan="2">
+                            New avilable beds
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        if (ViewBag.show)
+                        {
+                            <div class="alert alert-danger">
+                                <p style="color:red">@ViewBag.mess </p>
+                            </div>
+                        }
+                        @Html.ValidationSummary(true)
+                        <tr>
+                            <td> @Html.LabelFor(model => model.number, new { @class = "control-label col-md-2" })</td>
+                            <td>
+                                @Html.TextBoxFor(model => model.number, new { @class = "form-control", @type = "number" })
+                            @Html.ValidationMessageFor(model => model.number)
+                        </td>
+
+                    </tr>
+
+                        <tr>
+
+                            <td><label for="example-date-input" class="control-label col-md-2">date</label></td>
+                            <td><input class="form-control" type="date" value="2011-08-19" id="date" name="date"></td>
+
+                        </tr>
+
+
+
+                        <tr class="success">
+                            <td colspan="2">
+                                <input type="submit" value="submit" class="btn btn-success" />
+                            </td>
+                        </tr>
+
+
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+@Scripts.Render("~/bundles/bootstrap")

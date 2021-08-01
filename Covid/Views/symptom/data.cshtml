@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var allData = [];
+        var tBody = document.getElementById("tableBody");
+        var httReq = new XMLHttpRequest();
+        httReq.open("GET", "https://api.covidtracking.com/v1/states/current.json");
+        httReq.send();
+
+
+        httReq.onreadystatechange = function () {
+            if (httReq.readyState == 4 && httReq.status == 200) {
+                allData = JSON.parse(httReq.response);
+                displayData();
+            }
+        }
+
+        function displayData() {
+            var temp = "";
+            for (var i = 0; i < allData.length; i++) {
+                temp += "<tr><td>" + allData[i].state + "</td> <td>" + allData[i].totalTestResults + "</td> <td>" + allData[i].positive + "</td> <td>" + allData[i].death + "</td> </tr>"
+            }
+            document.getElementById("tableBody").innerHTML = temp;
+        }
+
+    </script>
+</head>
+<body>
+    <section class="page5">
+        <table class="table">
+            <thead>
+            <th>State</th>
+            <th>Total Test Results</th>
+            <th>Positive</th>
+            <th>Death</th>
+            </thead>
+            <tbody id="tableBody"></tbody>
+
+        </table>
+    </section>
+</body>
+</html>
+

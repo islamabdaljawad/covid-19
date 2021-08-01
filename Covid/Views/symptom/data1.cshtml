@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "data1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>tut</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</head>
+<body style="padding-top:20px">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="well">
+            <input id="btnLoadEmployees" class="btn btn-success"
+                   type="button" value="Load Employees" />
+            <input id="btnLogoff" class="btn btn-success pull-right"
+                   type="button" value="Log off" />
+        </div>
+
+        <div id="divData" class="well hidden">
+            <table class="table table-bordered" id="tblData">
+                <thead>
+                    <tr class="success">
+                        <td>Date</td>
+                        <td> state</td>
+                        <td>positive</td>
+
+                    </tr>
+                </thead>
+                <tbody id="tblBody"></tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+
+
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#btnLoadEmployees').click(function () {
+                $.ajax({
+                    url: 'https://api.covidtracking.com/v1/states/current.json',
+                    method: 'GET',
+
+                    success: function (data) {
+
+                        $('#tblBody').empty();
+                        $.each(data, function (index, value) {
+                            var row = $('<tr><td>' + value.date + '</td><td>'
+                                + value.state + '</td><td>'
+                                + value.positive + '</td><td>'
+                                );
+                            $('#tblData').append(row);
+                        });
+                    },
+
+
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+

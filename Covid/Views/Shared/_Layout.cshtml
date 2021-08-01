@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+
+
+
+
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" rel="stylesheet" />
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+        @Scripts.Render("~/bundles/modernizr")
+        <script src="http://code.jquery.com/jquery-latest.js"></script>*@
+
+
+    </head>
+
+<body style="min-height:100px">
+
+    @RenderBody()
+
+
+
+   
+    @RenderSection("scripts", required: false)
+</body>
+
+    <footer class="footer">
+        <div class="container content8">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>About Us</h3>
+                    <p style="line-height: 1.99em;">We are a team in the College of Computing and Artificial Intelligence implementing the idea of ​​the graduation project on the spreading Corona virus pandemic to help you avoid infection by limiting dealing with infected people and providing the necessary advice and guidance to deal with the virus.</p>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <h3>Team Work</h3>
+                    <p>Mahmoud Taha</p>
+                    <p>Hamada Magdy</p>
+                    <p>Mohamed Ashraf</p>
+                    <p>Hader Negm Eldeen</p>
+                    <p>Islam Abdelgawad</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Emails</h3>
+                    <p>mt289366@gamil.com </p>
+                    <p>hm215315@gmail.com</p>
+                    <p>ma784563@gamil.com</p>
+                    <p>hn151544@gmail.com</p>
+                    <p>ia412315@gamil.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+@*  Scripts.Render("~/bundles/jquery")*@
+
+@*@Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
+
+
+
+ 
+
+
+</html>

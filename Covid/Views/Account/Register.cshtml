@@ -1,0 +1,133 @@
+﻿@model Covid.Models.indexviewmodel
+
+@{
+    ViewBag.Title = "Register";
+
+}
+<link href="~/Content/css/footer.css" rel="stylesheet" />
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" rel="stylesheet" />
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+        @Scripts.Render("~/bundles/modernizr")
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+<script type="text/javascript" src="/test/wp-content/themes/child/script/jquery.jcarousel.min.js"></script>
+    -->
+
+
+
+<body background-color:#f3f1f1">
+    <div class="col-10" style="background-color:#f3f1f1; margin-right:10%;margin-left:10%">
+        <div class="well">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th colspan="2">
+                            New User Registration
+                            <a class="btn btn-success pull-right" href="~/Account/Login">Login</a>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                      
+                        <tr>
+                            <td>@Html.LabelFor(m => m.registermodel.UserName, new { @class = "col-md-5 control-label" })</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.registermodel.UserName, new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(m => m.registermodel.UserName)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.LabelFor(m => m.registermodel.Email, new { @class = "col-md-5 control-label", })</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.registermodel.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.registermodel.Email)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.LabelFor(m => m.UserType, new { @class = "col-md-5 control-label" })</td>
+                            <td>
+                                @Html.DropDownList("UserType", null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.UserType)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.LabelFor(m => m.cityname, new { @class = "col-md-5 control-label" })</td>
+                            <td>
+                                @Html.DropDownList("cityname", null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.cityname)
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>@Html.LabelFor(m => m.registermodel.Password, new { @class = "col-md-5 control-label" })</td>
+                            <td>
+                                @Html.PasswordFor(m => m.registermodel.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.registermodel.Password)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.LabelFor(m => m.registermodel.ConfirmPassword, new { @class = "col-md-5 control-label" })</td>
+                            <td>
+                                @Html.PasswordFor(m => m.registermodel.ConfirmPassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.registermodel.ConfirmPassword)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><p class="col-md-5 control-label"><b>select city</b></p></td>
+                            <td>
+                                @Html.ListBoxFor(m => m.cityviewmodel.selectedcities, Model.cityviewmodel.cities, new {@class = "form-control", id = "lstChosenEmployee" })
+                                @Html.ValidationMessageFor(model => model.cityviewmodel.selectedcities)
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" class="btn btn-success" value="Register" />
+                            </td>
+                        </tr>
+
+                    }
+
+            </table>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#lstChosenEmployee").chosen();
+    });
+</script>
+
+
+@Scripts.Render("~/bundles/bootstrap")
+
+@*
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+    *@

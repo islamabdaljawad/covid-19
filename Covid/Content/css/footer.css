@@ -1,0 +1,28 @@
+﻿
+.footer {
+    background-color: #1f2021;
+    overflow: auto;
+    margin-bottom:0px;
+}
+
+.content8 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+    .content8 h3 {
+        letter-spacing: 0px;
+        font-size: 17px;
+        color: #fff;
+        margin-bottom: 25px;
+        font-weight: 400;
+        font-family: 'Open Sans',arial;
+    }
+
+    .content8 p {
+        color: #58606b;
+        font-size: 14px;
+        line-height: 1.86em;
+        font-family: 'Open Sans',arial;
+        font-weight: 400;
+    }

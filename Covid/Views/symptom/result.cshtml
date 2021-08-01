@@ -1,0 +1,54 @@
+﻿@model Covid.Models.sympandresultviewmodel
+
+@{
+    ViewBag.Title = "result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="Scripts/jquery-1.10.2.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<link href="~/Content/css/footer.css" rel="stylesheet" />
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<body style="background-color: #f3f1f1">
+    <div class="col-10" style="background-color:#f3f1f1; margin-right:10%;margin-left:10%">
+        <div class="alert alert-danger">
+            <p style="color:red">
+                Dear visitor
+                These values ​​are approximate values ​​and cannot be completely reliable without a visit to the doctor
+                Please, if the corona virus infection rate is the highest in your result, you should go to the hospital
+            </p>
+        </div>
+        <div class="well">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th colspan="2" style="text-align:center">result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="col-lg-4">Covid-19   </td><td class="col-lg-4">@Model.testresultviewmodel.CoronaVirus</td></tr>
+                    <tr><td class="col-lg-4">common cold</td><td class="col-lg-4">@Model.testresultviewmodel.Cold       </td></tr>
+                    <tr><td class="col-lg-4">Flue      </td><td class="col-lg-4">@Model.testresultviewmodel.Flu        </td></tr>
+                    <tr><td class="col-lg-4">Allergies  </td><td class="col-lg-4">@Model.testresultviewmodel.Allergies  </td></tr>
+                </tbody>
+                <tfoot>
+                    <tr class="alert alert-danger">
+                        <td colspan=" 2" style="color:red">
+                            Dear visitor
+                            If your rate of infection with the Coronavirus is the highest,
+                            you can see the hospitals that have isolation beds in your city.
+                            <a href="~/hospital/displayhospitals">from here</a>
+                        </td>
+
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+@Scripts.Render("~/bundles/bootstrap")

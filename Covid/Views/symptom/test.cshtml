@@ -1,0 +1,57 @@
+﻿@model Covid.Models.sympandresultviewmodel
+@{
+    ViewBag.Title = "View1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+<link href="~/Content/css/footer.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    <body style="background-color: #f3f1f1;">
+        <div class="col-10"  style="background-color:#f3f1f1; margin-right:10%;margin-left:10%">
+            <div class="alert alert-danger">
+                <p style="color:red">
+                    Dear visitor
+                    We aim to inform you whether or not you are suffering from Coronavirus
+                    From please choose the symptoms you feel and be careful in your choice to get the best result
+                </p>
+            </div>
+            <div class=" well">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Test</th>
+                        </tr>
+                    </thead>
+                    @for (int i = 0; i < Model.symptomviewmodel.symptoms.Count; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            @:
+                            <tr></tr>
+                        }
+                        <td class="col-lg-4">
+
+                            @Html.CheckBoxFor(model => model.symptomviewmodel.symptoms[i].Isselected, new { @class = "form-check-input" })
+                            <label class="form-check-label">@Model.symptomviewmodel.symptoms[i].symptom_name</label>
+                            @Html.HiddenFor(model => model.symptomviewmodel.symptoms[i].symptom_Id)
+                            @Html.HiddenFor(model => model.symptomviewmodel.symptoms[i].symptom_name)
+
+
+
+
+                        </td>
+                    }
+                </table>
+
+                <input type="submit" value="submit" class="btn btn-success" />
+            </div>
+        </div>
+    </body>
+
+}
+
+@Scripts.Render("~/bundles/bootstrap")
